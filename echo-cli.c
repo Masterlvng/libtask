@@ -20,9 +20,10 @@ void send(void* v)
         snprintf(buf, sizeof buf, "hello");
         fdwrite(fd, buf, sizeof buf);
         while((n = fdread(fd, buf, 128)) > 0)
-            ;
+        {
+            write(1, buf, sizeof buf);
+        }
         close(fd);
-        write(1, buf, sizeof buf);
     }
 }
 
